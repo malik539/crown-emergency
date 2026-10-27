@@ -210,21 +210,6 @@ button{font:inherit}
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 16px;margin-top:30px}
 .cta-row .hint{width:100%;text-align:center;font-size:14px;color:var(--ink-3)}
 
-/* Reviews */
-.reviews{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:16px}
-@media(min-width:800px){.reviews{grid-template-columns:repeat(3,1fr);gap:20px}}
-.review{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
-.review .quote{color:var(--gold);width:28px;height:28px;margin-bottom:8px}
-.review blockquote{margin:0;font-size:15.5px;color:var(--ink);line-height:1.55}
-.review blockquote.clamp{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.review .more{display:none;align-self:flex-start;background:none;border:0;min-height:44px;padding:8px 0;margin-top:2px;color:var(--sky-600);font-weight:700;font-size:14px;cursor:pointer}
-.review .more.show{display:inline-block}
-.review .who{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:16px}
-.review .who img{width:44px;height:44px;border-radius:50%;object-fit:cover}
-.review .who strong{display:block;font-size:15px;color:var(--navy-900)}
-.review .who a{font-size:13px;color:var(--ink-3);text-decoration:none;display:inline-flex;align-items:center;gap:5px}
-.review .who a:hover{color:var(--sky-600);text-decoration:underline}
-.review .who a svg{width:14px;height:14px}
 
 /* Doctor */
 .doctor{display:grid;gap:28px;align-items:center}
@@ -280,6 +265,54 @@ button{font:inherit}
 footer{background:var(--navy-900);color:rgba(255,255,255,.7);font-size:13px;padding:18px 0 22px;border-top:1px solid rgba(255,255,255,.1)}
 footer .container{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;align-items:center}
 footer a{color:#fff}
+
+/* Reviews ticker */
+.reviews-sec{overflow:hidden}
+.gbadge{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:8px 14px;background:#fff;border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow-sm);font-size:14px;color:var(--ink-2)}
+.gbadge .gword{font-weight:700;font-size:17px;letter-spacing:-.02em}
+.gbadge strong{font-size:17px;color:var(--navy-900)}
+.stars{display:inline-flex;gap:1px;color:#f5b400}
+.stars svg{width:16px;height:16px}
+.gcount{color:var(--ink-3)}
+.ticker{position:relative;margin-top:28px}
+.ticker-viewport{overflow:hidden;padding:8px 0 12px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.ticker-track{list-style:none;margin:0;padding:0;display:flex;align-items:flex-start;width:max-content;will-change:transform;animation:ticker var(--dur,80s) linear infinite}
+@keyframes ticker{to{transform:translateX(-50%)}}
+.ticker-track.paused,.ticker-viewport:hover .ticker-track,.ticker-viewport:focus-within .ticker-track{animation-play-state:paused}
+.ticker-track .review{flex:0 0 300px;margin-right:16px}
+@media(min-width:600px){.ticker-track .review{flex-basis:340px;margin-right:20px}}
+.review{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+.rv-top{display:flex;align-items:center;justify-content:space-between;min-height:20px;margin-bottom:10px}
+.rv-top .gmark{margin-left:auto;width:18px;height:18px;color:var(--ink-3)}
+.review blockquote{margin:0;font-size:15px;color:var(--ink);line-height:1.5}
+.review blockquote.clamp{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.review .more{display:none;align-self:flex-start;background:none;border:0;min-height:44px;padding:8px 0;margin-top:2px;color:var(--sky-600);font-weight:700;font-size:14px;cursor:pointer}
+.review .more.show{display:inline-block}
+.review .who{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px}
+.review .who img,.review .avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:none}
+.review .avatar{display:flex;align-items:center;justify-content:center;background:var(--c,#4285f4);color:#fff;font-weight:700;font-size:17px}
+.review .who strong{display:block;font-size:14.5px;color:var(--navy-900)}
+.review .who a,.review .gsrc{font-size:12.5px;color:var(--ink-3);text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.review .who a:hover{color:var(--sky-600);text-decoration:underline}
+.review .who a svg,.review .gsrc svg{width:13px;height:13px}
+.ticker-ctl{display:flex;justify-content:center;margin-top:4px}
+.ticker-btn{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink-2);font-size:13px;font-weight:600;cursor:pointer}
+.ticker-btn svg{width:16px;height:16px}
+.ticker-btn .i-play{display:none}
+.ticker-btn[aria-pressed="true"] .i-play{display:block}
+.ticker-btn[aria-pressed="true"] .i-pause{display:none}
+@media(prefers-reduced-motion:reduce){
+  .ticker-track{animation:none;width:auto;padding:0 20px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;will-change:auto}
+  .ticker-track .review{scroll-snap-align:start}
+  .ticker-viewport{-webkit-mask-image:none;mask-image:none;overflow:visible}
+  .ticker-ctl{display:none}
+}
+
+/* Lazy image fade-in + staggered reveal */
+body:not(.no-js) .lazy-img{opacity:0;transition:opacity .45s ease}
+body:not(.no-js) .lazy-img.loaded{opacity:1}
+@media(prefers-reduced-motion:reduce){body:not(.no-js) .lazy-img{opacity:1;transition:none}}
+.stagger>.reveal{transition-delay:calc(var(--i,0)*70ms)}
 
 /* ---------- Mobile sticky CTA ---------- */
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:120;display:grid;grid-template-columns:1.15fr 1fr;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(3,43,66,.12);transform:translateY(110%);transition:transform .25s ease}
@@ -437,7 +470,7 @@ footer a{color:#fff}
       <h2 id="services-title">Emergency Dental Services We Provide</h2>
       <p>At Crown Dental Care, we offer same-day emergency scheduling, so don’t hesitate to call us!</p>
     </div>
-    <ul class="services">
+    <ul class="services stagger">
       <li class="svc reveal">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 3 1 5 2 8 .5 1.5 1 5 2.5 5S11 17 12 17s1 5 2.5 5S16.5 18.5 17 17c1-3 2-5 2-8a7 7 0 0 0-7-7z"/><path d="m17 3 4 4M21 3l-4 4"/></svg></div>
         <h3>Toothache Relief</h3>
@@ -485,42 +518,84 @@ footer a{color:#fff}
   </div>
 </section>
 
-<!-- ===================== 3. REVIEWS ===================== -->
-<section class="section" id="reviews" aria-labelledby="reviews-title">
+<!-- ===================== 3. REVIEWS (ticker) ===================== -->
+<section class="section reviews-sec" id="reviews" aria-labelledby="reviews-title">
   <div class="container">
     <div class="sec-head reveal">
       <span class="kicker">Patient Experiences</span>
       <h2 id="reviews-title">See Real Patient Reviews</h2>
+      <div class="gbadge" aria-label="Google rating 4.8 out of 5 from 310 reviews">
+        <span class="gword"><span style="color:#4285f4">G</span><span style="color:#ea4335">o</span><span style="color:#fbbc05">o</span><span style="color:#4285f4">g</span><span style="color:#34a853">l</span><span style="color:#ea4335">e</span></span>
+        <strong>4.8</strong><span class="stars" role="img" aria-label="Rated 5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span><span class="gcount">(310 reviews)</span>
+      </div>
     </div>
-    <ul class="reviews">
-      <li class="review reveal">
-        <svg class="quote" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.2 17.5c-1.8 0-3.2-1.5-3.2-3.4 0-3.9 2.5-7.1 6.3-8.6l.7 1.3c-2 .9-3.4 2.5-3.8 4.3.3-.1.6-.1.9-.1 1.7 0 3 1.4 3 3.2 0 1.9-1.6 3.3-3.9 3.3zm9.4 0c-1.8 0-3.2-1.5-3.2-3.4 0-3.9 2.5-7.1 6.3-8.6l.7 1.3c-2 .9-3.4 2.5-3.8 4.3.3-.1.6-.1.9-.1 1.7 0 3 1.4 3 3.2 0 1.9-1.6 3.3-3.9 3.3z"/></svg>
-        <blockquote class="clamp">Dr. T is simply the best! He is patient, kind and takes time to explain everything thoroughly and always answers any questions. Every procedure has been excellent.</blockquote>
-        <button class="more" type="button" aria-expanded="false">Read more</button>
-        <div class="who">
-          <img src="assets/img/reviewer-kathy-yerovi.webp" alt="" width="44" height="44" loading="lazy">
-          <div><strong>Kathy Yerovi</strong><a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSUNka0xXV2RBEAE!2m1!1s0x0:0x41875ea47df50b29!3m1!1s2@1:CIHM0ogKEICAgICdkLWWdA%7C%7C" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg>Google review</a></div>
-        </div>
-      </li>
-      <li class="review reveal">
-        <svg class="quote" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.2 17.5c-1.8 0-3.2-1.5-3.2-3.4 0-3.9 2.5-7.1 6.3-8.6l.7 1.3c-2 .9-3.4 2.5-3.8 4.3.3-.1.6-.1.9-.1 1.7 0 3 1.4 3 3.2 0 1.9-1.6 3.3-3.9 3.3zm9.4 0c-1.8 0-3.2-1.5-3.2-3.4 0-3.9 2.5-7.1 6.3-8.6l.7 1.3c-2 .9-3.4 2.5-3.8 4.3.3-.1.6-.1.9-.1 1.7 0 3 1.4 3 3.2 0 1.9-1.6 3.3-3.9 3.3z"/></svg>
-        <blockquote class="clamp">Great staff. Very clean place😁</blockquote>
-        <button class="more" type="button" aria-expanded="false">Read more</button>
-        <div class="who">
-          <img src="assets/img/reviewer-patricia-cleavenger.webp" alt="" width="44" height="44" loading="lazy">
-          <div><strong>patricia cleavenger</strong><a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURCdmVlcWZBEAE!2m1!1s0x0:0x41875ea47df50b29!3m1!1s2@1:CIHM0ogKEICAgIDBveeqfA%7CCgwIl73LngYQ6KnEpQI%7C" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg>Google review</a></div>
-        </div>
-      </li>
-      <li class="review reveal">
-        <svg class="quote" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.2 17.5c-1.8 0-3.2-1.5-3.2-3.4 0-3.9 2.5-7.1 6.3-8.6l.7 1.3c-2 .9-3.4 2.5-3.8 4.3.3-.1.6-.1.9-.1 1.7 0 3 1.4 3 3.2 0 1.9-1.6 3.3-3.9 3.3zm9.4 0c-1.8 0-3.2-1.5-3.2-3.4 0-3.9 2.5-7.1 6.3-8.6l.7 1.3c-2 .9-3.4 2.5-3.8 4.3.3-.1.6-.1.9-.1 1.7 0 3 1.4 3 3.2 0 1.9-1.6 3.3-3.9 3.3z"/></svg>
-        <blockquote class="clamp">Dr. Nateghi describes procedures and answers questions thoroughly. He and all the assistants that have treated me always take steps to ensure patients are comfortable. The office is modern, everyone there is friendly, and I’ve never felt so confident that I’m getting quality care.</blockquote>
-        <button class="more" type="button" aria-expanded="false">Read more</button>
-        <div class="who">
-          <img src="assets/img/reviewer-aly-paredes.webp" alt="" width="44" height="44" loading="lazy">
-          <div><strong>Aly Paredes</strong><a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURCazlqclJ3EAE!2m1!1s0x0:0x41875ea47df50b29!3m1!1s2@1:CIHM0ogKEICAgIDBk9jrRw%7CCgwI2ZrRngYQsNyClwI%7C" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg>Google review</a></div>
-        </div>
-      </li>
-    </ul>
+  </div>
+  <div class="ticker reveal" id="ticker">
+    <div class="ticker-viewport" id="ticker-viewport">
+      <ul class="ticker-track" id="ticker-track" aria-label="Patient reviews">
+        <li class="review">
+          <div class="rv-top"><span class="stars" role="img" aria-label="Rated 5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span><span class="gmark" title="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg></span></div>
+          <blockquote class="clamp">I recently started the process for dental implants and couldn’t be happier. The staff is wonderful and the process was throughly explained. The best part is that thanks to their healing treatment I experienced no pain at all. Thank you!</blockquote>
+          <button class="more" type="button" aria-expanded="false">Read more</button>
+          <div class="who"><span class="avatar" style="--c:#e8562a" aria-hidden="true">K</span><div><strong>Ken Lattimore</strong><span class="gsrc"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg>Google review</span></div></div>
+        </li>
+        <li class="review">
+          <div class="rv-top"><span class="stars" role="img" aria-label="Rated 5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span><span class="gmark" title="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg></span></div>
+          <blockquote class="clamp">I was sooo apprehensive for various reasons when I needed to have deep gum cleaning. Dr. Nateghi was wonderful and did the most amazing job administering my novocaine. By far the easiest and most painless procedure I've ever had. I cannot thank you enough for making me feel at ease, sympathized over my anxiety, and taking your time with my novacaine prep so that I would not feel a thing!:) I didn't get her name but there was a temp who did the actual cleaning and she too was fantastic!!</blockquote>
+          <button class="more" type="button" aria-expanded="false">Read more</button>
+          <div class="who"><span class="avatar" style="--c:#0f9d58" aria-hidden="true">L</span><div><strong>Laura Ols0n</strong><span class="gsrc"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg>Google review</span></div></div>
+        </li>
+        <li class="review">
+          <div class="rv-top"><span class="gmark" title="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg></span></div>
+          <blockquote class="clamp">Dr. T is simply the best! He is patient, kind and takes time to explain everything thoroughly and always answers any questions. Every procedure has been excellent.</blockquote>
+          <button class="more" type="button" aria-expanded="false">Read more</button>
+          <div class="who"><img class="lazy-img" src="assets/img/reviewer-kathy-yerovi.webp" alt="" width="40" height="40" decoding="async"><div><strong>Kathy Yerovi</strong><a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSUNka0xXV2RBEAE!2m1!1s0x0:0x41875ea47df50b29!3m1!1s2@1:CIHM0ogKEICAgICdkLWWdA%7C%7C" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg>Google review</a></div></div>
+        </li>
+        <li class="review">
+          <div class="rv-top"><span class="stars" role="img" aria-label="Rated 5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span><span class="gmark" title="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg></span></div>
+          <blockquote class="clamp">State of the art operation ! Knowledgeable and caring, first rate dentistry !!</blockquote>
+          <button class="more" type="button" aria-expanded="false">Read more</button>
+          <div class="who"><span class="avatar" style="--c:#4285f4" aria-hidden="true">J</span><div><strong>John Stanton</strong><span class="gsrc"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg>Google review</span></div></div>
+        </li>
+        <li class="review">
+          <div class="rv-top"><span class="stars" role="img" aria-label="Rated 5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span><span class="gmark" title="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg></span></div>
+          <blockquote class="clamp">Dr. Nateghi describes procedures and answers questions thoroughly. He and all the assistants that have treated me always take steps to ensure patients are comfortable. The office is modern, everyone there is friendly, and I’ve never felt so confident that I’m getting quality care.</blockquote>
+          <button class="more" type="button" aria-expanded="false">Read more</button>
+          <div class="who"><img class="lazy-img" src="assets/img/reviewer-aly-paredes.webp" alt="" width="40" height="40" decoding="async"><div><strong>Aly Paredes</strong><a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURCazlqclJ3EAE!2m1!1s0x0:0x41875ea47df50b29!3m1!1s2@1:CIHM0ogKEICAgIDBk9jrRw%7CCgwI2ZrRngYQsNyClwI%7C" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg>Google review</a></div></div>
+        </li>
+        <li class="review">
+          <div class="rv-top"><span class="stars" role="img" aria-label="Rated 5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span><span class="gmark" title="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg></span></div>
+          <blockquote class="clamp">Crown Dental is a great dental office. The front desk staff Daniel and Dr.Nateghi were very helpful and kind. They all took their time explaining things to me and while working on my teeth. My daughter also comes to this office for her routine cleanings and she always feels comfortable. I recommend this office to anyone that asks for a new dental practice.</blockquote>
+          <button class="more" type="button" aria-expanded="false">Read more</button>
+          <div class="who"><span class="avatar" style="--c:#7b1fa2" aria-hidden="true">C</span><div><strong>Carlita Miller</strong><span class="gsrc"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg>Google review</span></div></div>
+        </li>
+        <li class="review">
+          <div class="rv-top"><span class="stars" role="img" aria-label="Rated 5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span><span class="gmark" title="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg></span></div>
+          <blockquote class="clamp">this was my first visit as a a patient, I went in for a cleaning and X-rays. Lauren the hygienist was extremely knowledgeable, kind, patient and overall very pleasant. Dr.Nateghi was also extremely knowledgeable he gave me a detailed exam at the end and helped set up a plan to further take care of my teeth. The front staff was very helpful and hospitable. lastly the payment options for someone who isn’t insured are flexible and they provide a memebership which include 2 cleanings and 2 emergencies(I.e. fillings). Crown dental I’ll see you again soon!</blockquote>
+          <button class="more" type="button" aria-expanded="false">Read more</button>
+          <div class="who"><span class="avatar" style="--c:#00897b" aria-hidden="true">Z</span><div><strong>Zunshine of Ra</strong><span class="gsrc"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg>Google review</span></div></div>
+        </li>
+        <li class="review">
+          <div class="rv-top"><span class="stars" role="img" aria-label="Rated 5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span><span class="gmark" title="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg></span></div>
+          <blockquote class="clamp">So this is my first time leaving a review and I'm also young and haven't been to many different dentists myself but that's just how good my first experience here was. I only got a cleaning but the last dentist I went to and received a cleaning I left in a lot of pain and discomfort. Laura did my cleaning ( hoping I spelled her name right) and she did a excellent job always made sure I was okay through the whole process, explained all of my questions thoroughly and just explained everything as she was going. I also left with no pain and discomfort along with a very good cleaning. She definitely made my experience enough for me to leave a review lol. Everybody else including the doctor was just as good I will definitely be returning thank you!</blockquote>
+          <button class="more" type="button" aria-expanded="false">Read more</button>
+          <div class="who"><span class="avatar" style="--c:#f4511e" aria-hidden="true">K</span><div><strong>Khaliya Ali</strong><span class="gsrc"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg>Google review</span></div></div>
+        </li>
+        <li class="review">
+          <div class="rv-top"><span class="stars" role="img" aria-label="Rated 5 out of 5 stars"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span><span class="gmark" title="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg></span></div>
+          <blockquote class="clamp">I've been coming here since they first opened. The staff is still welcoming and I had a good experience with my cleaning and filling this time around. I do recommend coming here for your dental services.</blockquote>
+          <button class="more" type="button" aria-expanded="false">Read more</button>
+          <div class="who"><span class="avatar" style="--c:#c0392b" aria-hidden="true">Y</span><div><strong>Yum “Icyfire2013”</strong><span class="gsrc"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg>Google review</span></div></div>
+        </li>
+        <li class="review">
+          <div class="rv-top"><span class="gmark" title="Google"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg></span></div>
+          <blockquote class="clamp">Great staff. Very clean place😁</blockquote>
+          <button class="more" type="button" aria-expanded="false">Read more</button>
+          <div class="who"><img class="lazy-img" src="assets/img/reviewer-patricia-cleavenger.webp" alt="" width="40" height="40" decoding="async"><div><strong>patricia cleavenger</strong><a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURCdmVlcWZBEAE!2m1!1s0x0:0x41875ea47df50b29!3m1!1s2@1:CIHM0ogKEICAgIDBveeqfA%7CCgwIl73LngYQ6KnEpQI%7C" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 12.2c0-.7-.1-1.3-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6L6.4 14z"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.4L6.4 10c.8-2.3 3-4 5.6-4z"/></svg>Google review</a></div></div>
+        </li>
+      </ul>
+    </div>
+    <div class="ticker-ctl"><button type="button" class="ticker-btn" id="ticker-btn" aria-pressed="false"><svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg><svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span>Pause</span></button></div>
   </div>
 </section>
 
@@ -528,7 +603,7 @@ footer a{color:#fff}
 <section class="section section-alt" id="doctor" aria-labelledby="doctor-title">
   <div class="container doctor">
     <div class="doctor-photo reveal">
-      <img src="assets/img/dr-thy-nguyen-640.webp"
+      <img class="lazy-img" src="assets/img/dr-thy-nguyen-640.webp"
            srcset="assets/img/dr-thy-nguyen-400.webp 400w, assets/img/dr-thy-nguyen-640.webp 640w, assets/img/dr-thy-nguyen-900.webp 900w"
            sizes="(min-width: 900px) 420px, (min-width: 600px) 60vw, 90vw"
            alt="Dr. Thy Nguyen, DDS, of Crown Dental Care in Rockville, Maryland" width="640" height="800" loading="lazy" decoding="async">
@@ -656,17 +731,50 @@ footer a{color:#fff}
     reveals.forEach(function (el) { el.classList.add('in'); });
   }
 
-  // ---- Review "Read more" (only when text is clamped) ----
-  document.querySelectorAll('.review').forEach(function (card) {
-    var q = card.querySelector('blockquote'), btn = card.querySelector('.more');
-    function check() { if (q.scrollHeight > q.clientHeight + 2) btn.classList.add('show'); }
-    check();
-    btn.addEventListener('click', function () {
+  // ---- Lazy image fade-in ----
+  // Capture-phase listener covers images added later (e.g. ticker clones)
+  document.addEventListener('load', function (e) { if (e.target.classList && e.target.classList.contains('lazy-img')) e.target.classList.add('loaded'); }, true);
+  document.addEventListener('error', function (e) { if (e.target.classList && e.target.classList.contains('lazy-img')) e.target.classList.add('loaded'); }, true);
+  document.querySelectorAll('.lazy-img').forEach(function (img) { if (img.complete) img.classList.add('loaded'); });
+  document.querySelectorAll('.stagger').forEach(function (g) {
+    Array.prototype.forEach.call(g.children, function (el, i) { el.style.setProperty('--i', i % 4); });
+  });
+
+  // ---- Reviews ticker ----
+  var track = document.getElementById('ticker-track');
+  var tickerBtn = document.getElementById('ticker-btn');
+  if (track) {
+    if (!reduce) {
+      var originals = Array.prototype.slice.call(track.children);
+      originals.forEach(function (li) { var c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); c.querySelectorAll('.lazy-img').forEach(function (im) { if (im.complete) im.classList.add('loaded'); }); c.querySelectorAll('a,button').forEach(function (x) { x.setAttribute('tabindex', '-1'); }); track.appendChild(c); });
+      var setSpeed = function () { track.style.setProperty('--dur', Math.max(40, Math.round(track.scrollWidth / 2 / 38)) + 's'); };
+      setSpeed(); window.addEventListener('resize', setSpeed);
+      // Run only while on screen (saves CPU/battery)
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (en) { track.style.animationPlayState = en[0].isIntersecting ? '' : 'paused'; }, { threshold: 0 }).observe(track);
+      }
+    }
+    var userPaused = false;
+    function applyPause() { track.classList.toggle('paused', userPaused || !!track.querySelector('.review.expanded')); }
+    if (tickerBtn) tickerBtn.addEventListener('click', function () {
+      userPaused = !userPaused; tickerBtn.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
+      tickerBtn.querySelector('span').textContent = userPaused ? 'Play' : 'Pause'; applyPause();
+    });
+    // "Read more" only when text is actually clamped; expanding pauses the ticker
+    track.querySelectorAll('.review').forEach(function (card) {
+      var q = card.querySelector('blockquote'), btn = card.querySelector('.more');
+      if (q.scrollHeight > q.clientHeight + 2) btn.classList.add('show');
+    });
+    track.addEventListener('click', function (e) {
+      var btn = e.target.closest('.more'); if (!btn) return;
+      var card = btn.closest('.review'), q = card.querySelector('blockquote');
       var open = q.classList.toggle('clamp') === false;
+      card.classList.toggle('expanded', open);
       btn.textContent = open ? 'Show less' : 'Read more';
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      applyPause();
     });
-  });
+  }
 
   // ---- Mobile sticky CTA ----
   var sticky = document.getElementById('sticky');
