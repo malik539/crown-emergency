@@ -15,7 +15,7 @@ Open `index.html` directly or serve the folder with any static host.
 1. Urgency bar + compact header (logo, phone, Call Now)
 2. Hero + emergency form (55/45 desktop split) + trust strip
 3. Emergency Dental Services We Provide (7 approved services in a card grid)
-4. See Real Patient Reviews – Google 4.8 (310 reviews) badge + an auto-scrolling ticker of 10 real Google reviews (CSS transform animation, pauses on hover/focus, has a Pause button, pauses while a review is expanded, stops when off-screen, and becomes a static swipeable row under `prefers-reduced-motion`)
+4. See Real Patient Reviews – Google 4.9 (696 reviews) badge + an auto-scrolling ticker of 10 real Google reviews (CSS transform animation, pauses on hover/focus, has a Pause button, pauses while a review is expanded, stops when off-screen, and becomes a static swipeable row under `prefers-reduced-motion`)
 5. Meet Dr. Thy Nguyen + Why Trust Us badges
 6. Emergency Dentist in Rockville, MD / Can I Wait Until I See a Dentist?
 7. Final CTA + financing statement + responsive Google Map
@@ -77,7 +77,7 @@ Recommended Google Ads conversions: `phone_click` (primary) and `emergency_form_
 
 * Copy, services, reviews, doctor bio, trust points and financing statement come from the
   approved content document (`Crown Dental Care - Emergency Dental Treatment`).
-* The Google 4.8 rating, 310-review count and the 5-star rows come from the verified Google Reviews screenshots supplied by the client. The two reviews that appear only in the approved content document (Kathy Yerovi, patricia cleavenger) are shown without a star row but keep their link to the original Google review.
+* The Google 4.9 rating and 696-review count were supplied by the client; the 5-star rows come from the verified Google Reviews screenshots supplied by the client. The two reviews that appear only in the approved content document (Kathy Yerovi, patricia cleavenger) are shown without a star row but keep their link to the original Google review.
 * Review text is reproduced verbatim, including the reviewers' own spelling.
 * Images: supplied logo and Dr. Thy Nguyen photo only. No stock imagery.
 * Privacy policy: https://dentistinrockville.com/privacy-policy/
