@@ -90,10 +90,11 @@ button{font:inherit}
 @media(min-width:600px){.bar-long{display:inline}}
 @media(max-width:599px){.urgency-bar{font-size:13px;padding:7px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.urgency-bar .dot{margin:0 6px}}
 .header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--line)}
-.header .container{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px}
-@media(min-width:768px){.header .container{min-height:68px}}
-.logo img{width:132px;height:auto}
-@media(min-width:768px){.logo img{width:176px}}
+.header .container{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:12px;padding-bottom:12px}
+@media(min-width:768px){.header .container{padding-top:14px;padding-bottom:14px}}
+.logo{display:flex;align-items:center;line-height:0}
+.logo img{width:120px;height:auto}
+@media(min-width:768px){.logo img{width:160px}}
 .header-right{display:flex;align-items:center;gap:18px}
 .header-phone{display:none;text-decoration:none;color:var(--ink);font-weight:600;line-height:1.2}
 .header-phone small{display:block;font-size:12px;color:var(--ink-3);font-weight:500}
@@ -344,7 +345,7 @@ body:not(.no-js) .lazy-img.loaded{opacity:1}
 <header class="header">
   <div class="container">
     <a class="logo" href="#top" aria-label="Crown Dental Care Rockville – back to top">
-      <img src="assets/img/crown-dental-care-logo.webp" alt="Crown Dental Care" width="176" height="70" fetchpriority="high">
+      <img src="assets/img/crown-dental-care-logo.webp" alt="Crown Dental Care" width="160" height="64" fetchpriority="high">
     </a>
     <div class="header-right">
       <a class="header-phone" href="tel:2408513012" data-track="phone_click" data-loc="header_phone">
